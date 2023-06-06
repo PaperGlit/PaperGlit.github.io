@@ -51,7 +51,6 @@ function getLocation() {
                     latitude = position.coords.latitude;
                     longitude = position.coords.longitude;
                     const locationString = `${latitude}, ${longitude}`;
-                    alert(`Your location: ${locationString}`);
                     closePopups();
                     showContainers();
                     resolve(locationString);
@@ -67,22 +66,6 @@ function getLocation() {
     });
 }
 
-function openManualWindow() {
-    var popup = document.querySelector('.popup');
-    var manualWindow = document.getElementById('manualWindow');
-    popup.style.display = 'none';
-    manualWindow.style.display = 'block';
-}
-
-function submitLocation() {
-    var locationInput = document.querySelector('.location-input');
-    var ulocation = locationInput.value;
-    console.log('Entered location:', ulocation);
-    locationInput.value = '';
-    closePopups();
-    showContainers();
-}
-
 function closePopups() {
     var popup = document.querySelector('.popup');
     var manualWindow = document.getElementById('manualWindow');
@@ -94,15 +77,6 @@ function showContainers() {
     var containerWrapper = document.getElementById('container-wrapper');
     containerWrapper.style.display = 'flex';
 }
-
-const createRowInDatabase = async (data) => {
-    try {
-        const response = await axios.post('https://fys.pp.ua/api/fysShelter', data);
-        console.log(response.data);
-    } catch (error) {
-        console.error(error);
-    }
-};
 
 const getRowsFromDatabase = async () => {
     try {
@@ -123,7 +97,3 @@ const sendDistance = async (data) => {
         console.error(error);
     }
 };
-
-//sendDistance(dist);
-
-//createRowInDatabase(first);
