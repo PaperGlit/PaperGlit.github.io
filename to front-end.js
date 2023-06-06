@@ -41,7 +41,7 @@ document.getElementById('button1').addEventListener('click', async () => {
 });
 
 const axiosInstance = axios.create({
-    baseURL: '/api',
+    baseURL: '176.8.175.199/api/',
 });
 
 let latitude;
