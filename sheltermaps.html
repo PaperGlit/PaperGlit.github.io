@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>FindYourShelter | Карта укриттів</title>
+
+<style>
+   body {
+      background-image: url("unnamed13.png") /* шлях до зображення фону сторінки */
+       background-size: cover;
+      background-position: top top;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      color: #fff;
+      padding: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    button {
+      background-color: transparent; 
+      border: none;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    #search {
+      margin-right: 10px;
+    }
+    #menu {
+      margin-left: 10px;
+    }
+
+    .image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .image-container img {
+    position: center center;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .image-container img {
+    max-width: 100%;
+  }
+}
+}
+  </style>
+
+</head>
+  <header>
+    <button id="search">
+      <img src="unnamed (3).png" width="50">
+    </button>
+    <h1><img src="unnamed (2).png" width="160"></h1>
+    <button id="menu">
+      <img src="unnamed (4).png" width="50">
+    </button>
+  </header>
+
+  <center>
+    <div class="image-container">
+    <img src="shelmap.png">
+  </div>
+  </center>
+  </body>
+</html>

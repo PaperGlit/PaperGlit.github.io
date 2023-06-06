@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <title>FindYourShelter | Знайти укриття</title>
+  <style>
+    /* CSS styles */
+    body {
+      background-image: url("unnamed11.jpg");
+      background-size: cover;
+      background-position: center top;
+	  font-family: Arial, sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      color: #fff;
+      padding: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    button {
+      background-color: transparent; 
+      border: none;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    #search {
+      margin-right: 10px;
+    }
+
+    #menu {
+      margin-left: 10px;
+    }
+
+    body {
+      background-color: #FFFFFF; /* Page background color */
+    }
+
+    hr {
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 200px;
+      background-color: #e7e7e7;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .button img {
+      width: 12px;
+      cursor: pointer;
+    }
+
+    #manualWindow {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 200px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .location-input-container {
+      display: flex;
+      align-items: center;
+      width: 300px;
+      height: 40px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    .location-input {
+      flex: 1;
+      height: 100%;
+      padding: 0 10px;
+      border: none;
+      outline: none;
+    }
+
+    .confirm-button {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .confirm-button img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    #container-wrapper {
+      display: none;
+      overflow-y: auto;
+      padding: 10px;
+      justify-content: center;
+  align-items: center; 
+
+    }
+
+    .container {
+      background-color: #e7e7e7;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      display: flex;
+
+      font-size: 16px;
+      color: #fff;
+      justify-content: center;
+  align-items: center;
+    }
+
+@media (min-width: 768px) {
+  #container-wrapper {
+    flex-wrap: wrap; 
+    max-height: 550px;
+    justify-content: center;
+  align-items: center;
+  }
+
+  .container {
+     margin-right: 10px;
+     height: 200px;
+     width: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+  #container-wrapper {
+     flex-direction: row;
+    flex-wrap: wrap; 
+     overflow-y: scroll;
+     overflow-x: hidden;
+
+     justify-content: flex-start; 
+    max-height: 730px;
+  }
+  .container {
+     margin-bottom: 7px;
+     margin-right: 5px;
+     height: 200px;
+      width: calc(50% - 5px);
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- Top menu -->
+    <button id="search">
+      <img src="unnamed (3).png" width="50">
+    </button>
+    <h1><img src="unnamed (2).png" width="160"></h1>
+    <button id="menu">
+      <img src="unnamed (4).png" width="50">
+    </button>
+  </header>
+
+  <div class="popup">
+    <!-- Popup window -->
+    <img src="find.png" alt="Image 1" height="25px">
+    <hr>
+    <img src="ask.png" alt="Image 2" height="100px">
+    <br><br>
+    <div class="button-container">
+      <!-- Buttons in the popup window -->
+      <button id="button1"><img src="tak.png" alt="Geolocation Button" height="30px"></button>
+      <button id="button2"><img src="enter.png" alt="Manual Location Button" height="30px" onclick="openManualWindow()"></button>
+    </div>
+  </div>
+
+  <div id="manualWindow">
+    <!-- Window for manual input -->
+    <div class="popup">
+      <img src="place.png" alt="Image 1" height="24px">
+      <hr>
+      <img src="write.png" alt="Image 2" height="90px">
+      <div class="location-input-container">
+        <!-- Location input field -->
+        <input type="text" class="location-input" placeholder="Введіть дані у зазначеному форматі...">
+        <div class="confirm-button" onclick="submitLocation()">
+          <img src="unnamed (3).png" alt="Confirm Button">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="container-wrapper">
+
+    <!-- Swipeable container wrapper -->
+    <div class="container"> 
+      <button id="go0"></button>
+	  <p></p>
+    </div>
+    <div class="container">
+      <button id="go1"></button>
+	  <p></p>
+    </div>
+   <div class="container"> 
+      <button id="go2"></button>
+	  <p></p>
+    </div>
+    <div class="container"> 
+      <button id="go3"></button>
+	  <p></p>
+    </div>
+    <div class="container"> 
+      <button id="go4"></button>
+	  <p></p><p></p>
+    </div>
+    <div class="container"> 
+      <button id="go5"></button>
+	  <p></p>
+    </div>
+  </div>
+
+  <!-- JavaScript code -->
+ <script type="module" charset="utf-8" src="to front-end.js"></script>
+</body>
+</html>
+
+
+
+<!---  Стилі CSS задають оформлення сторінки, включаючи фон, заголовок, кнопки тощо.
+
+popup та manualWindow - це елементи, які відображаються у вигляді спливаючих вікон.
+
+button1 і button2 - кнопки зображені в попапі, при натисканні на них виконуються певні дії.
+
+Скрипт на останній частині коду містить обробники подій та функції JavaScript для взаємодії з користувачем:
+- Функція getLocation() отримує геолокацію користувача, якщо це підтримується браузером.
+- Функція showPosition(position) відображає геолокацію користувача (широту та довготу) у спливаючому повідомленні 
+          (не є потрібною, була створена просто для перевірки)
+- Функція openManualWindow() приховує один попап та відображає інший.
+- Функція submitLocation() отримує значення введеної локації та виводить її в консоль, а також очищує поле введення. -->

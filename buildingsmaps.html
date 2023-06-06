@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>FindYourShelter | Карта навчальних корпусів</title>
+  <style>
+   body {
+      /*background-image: url("unnamed13.png"); /* шлях до зображення фону сторінки */
+       /*background-size: cover;
+      background-position: center top; */
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      color: #fff;
+      padding: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    button {
+      background-color: transparent; 
+      border: none;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    #search {
+      margin-right: 10px;
+    }
+    #menu {
+      margin-left: 10px;
+    }
+  </style>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAnPloVC0HEyL7L6ky53HNVREQ5VpnHZI"></script>
+  <script>
+    let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+}
+
+window.initMap = initMap;
+  </script>
+
+</head>
+<body onload="initMap()">
+  <header>
+    <button id="search">
+      <img src="unnamed (3).png" width="50">
+    </button>
+    <h1><img src="unnamed (2).png" width="160"></h1>
+    <button id="menu">
+      <img src="unnamed (4).png" width="50">
+    </button>
+  </header>
+  <center>
+    <img src="unnamed (10).png" width="300">
+    <div id="map" style="height: 500px; width: 100%;"></div>
+  </center>
+</body>
+</html>
+
