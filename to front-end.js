@@ -1,4 +1,3 @@
-//const axios = require('axios');
 import axios from 'https://cdn.jsdelivr.net/npm/axios@1.4.0/+esm';
 
 class Sheter {
