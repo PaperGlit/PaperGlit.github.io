@@ -97,7 +97,7 @@ function showContainers() {
 
 const createRowInDatabase = async (data) => {
     try {
-        const response = await axios.post('http://176.8.175.199:3000/api/fysShelter', data);
+        const response = await axios.post('https://176.8.175.199:3000/api/fysShelter', data);
         console.log(response.data);
     } catch (error) {
         console.error(error);
@@ -106,7 +106,7 @@ const createRowInDatabase = async (data) => {
 
 const getRowsFromDatabase = async () => {
     try {
-        const response = await axios.get('http://176.8.175.199:3000/api/fysShelter');
+        const response = await axios.get('https://176.8.175.199:3000/api/fysShelter');
         console.log(response.data);
         shelters = response.data;
     } catch (error) {
@@ -116,7 +116,7 @@ const getRowsFromDatabase = async () => {
 
 const sendDistance = async (data) => {
     try {
-        const response = await axios.post('http://176.8.175.199:3000/api/sendloc', { location: data });
+        const response = await axios.post('https://176.8.175.199:3000/api/sendloc', { location: data });
         console.log(response.data)
         return response.data;
     } catch (error) {
