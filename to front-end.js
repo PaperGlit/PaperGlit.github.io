@@ -16,7 +16,8 @@ document.getElementById('button1').addEventListener('click', async () => {
     try {
         const location = await getLocation();
         if (location) {
-            const shelters = await sendDistance(location);
+			const location1 = "49.83519792350438, 24.009562557873615";
+            const shelters = await sendDistance(location1);
             let dist1;
             let dist = shelters.map(a => a.Distance);
             for (let i = 0; i < dist.length; i++) {   
@@ -78,7 +79,7 @@ function showContainers() {
 
 const getRowsFromDatabase = async () => {
     try {
-        const response = await axios.get('https://fys.pp.ua/api/fysShelter');
+        const response = await axios.get('https://fys.pp.ua:3000/api/fysShelter');
         console.log(response.data);
         shelters = response.data;
     } catch (error) {
@@ -88,7 +89,7 @@ const getRowsFromDatabase = async () => {
 
 const sendDistance = async (data) => {
     try {
-        const response = await axios.post('https://fys.pp.ua/api/sendloc', { location: data });
+        const response = await axios.post('https://fys.pp.ua:3000/api/sendloc', { location: data });
         console.log(response.data)
         return response.data;
     } catch (error) {
