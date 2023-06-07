@@ -28,9 +28,9 @@ document.getElementById('button1').addEventListener('click', async () => {
                 }
                 console.log(dist1);
                 document.getElementById('go' + i).setAttribute('style', 'white-space: pre;');
-                document.getElementById('go' + i).textContent = shelters[i].Description + ' (' + shelters[i].Street + ')\r\n';
+				document.getElementById('go' + i).style.color = "Black";
+                document.getElementById('go' + i).textContent = shelters[i].Description + '\r\n(' + shelters[i].Street + ')\r\n';
                 document.getElementById('go' + i).textContent += dist1;
-                document.getElementById('go' + i).style.color = "Black";
                 document.getElementById('go' + i).addEventListener('click', async () => { redirect(location, shelters[i].ShelterLocation); });
             }
         }
