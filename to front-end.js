@@ -16,8 +16,7 @@ document.getElementById('button1').addEventListener('click', async () => {
     try {
         const location = await getLocation();
         if (location) {
-            let shelters = await sendDistance(location);
-            shelters.sort((a, b) => a.Distance - b.Distance);
+            const shelters = await sendDistance(location);
             let dist1;
             let dist = shelters.map(a => a.Distance);
             for (let i = 0; i < dist.length; i++) {   
